@@ -16,3 +16,8 @@ func (b Book) UpdatePages(p int) {
 	b.Pages = p
 	fmt.Printf("Updated book: %v\n", b)
 }
+
+func (b *Book) UpdatePagesPointer(p int) {
+	b.Pages = p
+	fmt.Printf("Updated with Pointer Book: %v\n", b)
+}

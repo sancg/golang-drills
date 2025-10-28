@@ -28,4 +28,10 @@ func main() {
 
 	book.UpdatePages(10)
 	book.Summary()
+
+	fmt.Println("----------------------------")
+	fmt.Println("Mutating the Struct from a Function *Pointer Reference")
+	fmt.Println("----------------------------")
+	book.UpdatePagesPointer(30)
+	book.Summary()
 }
