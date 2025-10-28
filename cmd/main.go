@@ -12,26 +12,27 @@ func main() {
 		Pages:  310,
 	}
 	book.Summary()
-
-	// Reviewing pointers
-	// When modified directly the struct changes as expected
-	fmt.Println("----------------------------")
-	fmt.Println("Mutating the Struct Directly")
-	fmt.Println("----------------------------")
-	book.Author = "Santiago Cano"
-	book.Summary()
-
-	// However, if a function needs to directly modify the object...
-	fmt.Println("----------------------------")
-	fmt.Println("Mutating the Struct from a Function Reference")
-	fmt.Println("----------------------------")
-
-	book.UpdatePages(10)
-	book.Summary()
+	// concepts.RunPointers(&book)
 
 	fmt.Println("----------------------------")
-	fmt.Println("Mutating the Struct from a Function *Pointer Reference")
+	fmt.Println("Drill Exercise: Slices & Methods")
 	fmt.Println("----------------------------")
-	book.UpdatePagesPointer(30)
-	book.Summary()
+	lib := app.Library{}
+	lib.AddCollection("Fantasy")
+
+	fmt.Printf("Collections: %v\n", lib)
+	lib.AddCollection("Fantasy")
+	fmt.Printf("Collections After duplicate?: %v\n", lib)
+
+	lib.AddBook(book, "")
+	fmt.Printf("Collection Default: %v\n", lib)
+
+	lib.AddBook(book, "Fantasy")
+	fmt.Printf("Collection Fantasy: %v\n", lib)
+
+	lib.AddBook(book, "")
+	fmt.Printf("Collection Default Duplicate?: %v\n", lib)
+
+	lib.AddBook(app.Book{Author: "Edgar Schein", Title: "Humble Inquiry: The Gentle Art of Asking Instead of Telling", Pages: 144}, "Daily")
+	lib.ListBook()
 }
